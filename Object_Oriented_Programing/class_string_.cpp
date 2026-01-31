@@ -1,0 +1,66 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+    class binary{
+        // private:
+        string s;
+
+        public:
+        void read(void);
+        void chk_bin(void);
+        void ones_compliment(void);
+        void display(void);
+    };
+
+    void binary :: read(void){
+        cout<<"Enter a binary number: ";
+        cin>>s;
+    }
+    void binary :: chk_bin(void){
+        for(int i=0; i<s.length(); i++)
+        {
+            if(s.at(i)!='0' && s.at(i)!='1')
+            {
+                cout<<"Incorect Binary Form "<<endl;
+                exit(0);
+            }
+            // else{
+            //     cout<<"Corect Binary Form "<<endl;    
+            // }
+        }
+    }
+    void binary :: ones_compliment(void)
+    {
+        //chk_bin();
+        for(int i=0; i<s.length(); i++)
+        {
+        if(s.at(i)=='0')
+        {
+            s.at(i)='1';
+        }
+        else{
+            s.at(i)='0';
+        }
+        }
+    }
+    void binary :: display(void)
+    {
+        cout<<"Display Your Binary Number: "<<endl;
+        for(int i=0 ; i < s.length(); i++)
+        {
+        cout<<s.at(i);
+        }
+        cout<<endl;
+    }
+    
+int main(){
+   binary b;
+   b.read();
+   b.chk_bin();
+   b.display();
+   b.ones_compliment();
+   b.display();
+
+   return 0;
+}
