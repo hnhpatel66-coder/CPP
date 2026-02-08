@@ -52,13 +52,19 @@ void Inventory_Management_System::sell_stock()
 void Inventory_Management_System::total_stock(int n, Inventory_Management_System I[])
 {
     int sum = 0;
+    float price_sum = 0;
     for (int i = 0; i < n; i++)
     {
         cout << "Item " << i + 1 << ": ";
-       
+
         sum = sum + I[i].Quantity_in_stock;
+        price_sum = price_sum + (I[i].Price * I[i].Quantity_in_stock);
+        cout << I[i].Quantity_in_stock << endl
+             << "Item Price: " << I[i].Price << endl;
+        cout << "Item Value: " << I[i].Price * I[i].Quantity_in_stock << endl;
     }
     cout << "Total Stock Count: " << sum << endl;
+    cout << "Total Stock Value: " << price_sum << endl;
 }
 void Inventory_Management_System::display()
 {
@@ -84,36 +90,58 @@ int main()
     cout << "How many items do you want to manage? ";
     cin >> n;
     Inventory_Management_System I[n];
-    cout << "Items created successfully!" << endl;
-    cout << "1. Add Stock" << endl;
-    cout << "2. Sell Stock" << endl;
-    cout << "3. Display Inventory" << endl;
-    cout << "4. Total Stock Count" << endl;
-    cout << "5. Add details of an item" << endl;
-    cout << "6. Exit" << endl;
     int choice;
     do
     {
+
+        cout << "1. Add details of an item" << endl;
+        cout << "2. Sell Stock" << endl;
+        cout << "3. Display Inventory" << endl;
+        cout << "4. Total Stock Count" << endl;
+        cout << "5. Add Stock to an existing item" << endl;
+        cout << "6. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
         switch (choice)
         {
         case 1:
-            cout << "Enter index of item to add stock: ";
-            int i;
-            cin >> i;
-            if (i >= 0 && i < n)
-                I[i].add_stock();
-
-            break;
+        {
+            string id, name;
+            float price;
+            int quantity, ix;
+            cout << "Enter Index of Item: ";
+            cin >> ix;
+            cout << "Enter Unique Item ID: ";
+            cin >> id;
+            cout << "Enter Item Name: ";
+            cin >> name;
+            cout << "Enter Price: ";
+            cin >> price;
+            cout << "Enter Quantity in Stock: ";
+            cin >> quantity;
+            if (ix - 1 >= 0 && ix - 1 < n)
+            {
+                I[ix - 1] = Inventory_Management_System(id, name, price, quantity);
+            }
+            else
+            {
+                cout << "Invalid index!" << endl;
+            }
+            cout << "Item details added successfully!" << endl;
+        }
+        break;
         case 2:
             cout << "Enter index of item to sell stock: ";
             int j;
             cin >> j;
-            if (j >= 0 && j < n)
-                I[j].sell_stock();
+            if (j - 1 >= 0 && j - 1 < n)
+            {
+                I[j - 1].sell_stock();
+            }
             else
+            {
                 cout << "Invalid index!" << endl;
+            }
             break;
         case 3:
             for (int i = 0; i < n; i++)
@@ -123,22 +151,21 @@ int main()
             }
             break;
         case 4:
-             I[n-1].total_stock(n, I);
+            I[n - 1].total_stock(n, I);
             break;
         case 5:
         {
-            string id, name;
-            float price;
-            int quantity;
-            cout << "Enter Unique Item ID: ";
-            cin >> id;
-            cout << "Enter Item Name: ";
-            cin >> name;
-            cout << "Enter Price: ";
-            cin >> price;
-            cout << "Enter Quantity in Stock: ";
-            cin >> quantity;
-            I[n - 1] = Inventory_Management_System(id, name, price, quantity);
+            cout << "Enter index of item to add stock: ";
+            int i;
+            cin >> i;
+            if (i - 1 >= 0 && i - 1 < n)
+            {
+                I[i - 1].add_stock();
+            }
+            else
+            {
+                cout << "Invalid index!" << endl;
+            }
         }
         break;
         case 6:
@@ -147,7 +174,7 @@ int main()
         default:
             cout << "Invalid choice!" << endl;
         }
-    } while (choice != 5);
+    } while (choice != 6);
 
     return 0;
 }
