@@ -28,7 +28,7 @@ public:
     }
     double calc_intrest()
     {
-        double monthly_interest_rate = Annual_Interest_Rate / 12 / 100;
+        double monthly_interest_rate = Annual_Interest_Rate / (12 * 100);
         double emi = (Total_Loan_Amount * monthly_interest_rate * pow(1 + monthly_interest_rate, Loan_Tenure_Months)) / (pow(1 + monthly_interest_rate, Loan_Tenure_Months) - 1);
         cout << "---------------------------------------------------------" << endl;
         cout << " Total monthly EMI is: " << emi << endl;
