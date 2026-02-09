@@ -38,7 +38,7 @@ public:
     }
     void display_details()
     {
-        cout << "_________________________________________________________________________________" << endl;
+        cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << endl;
         cout << "Loan ID: " << Loan_ID << endl;
         cout << "Applicant Name: " << Applicant_Name << endl;
         cout << "Total Loan Amount: " << Total_Loan_Amount << endl;
@@ -46,37 +46,18 @@ public:
         cout << "Loan Tenure (Months): " << Loan_Tenure_Months << endl;
         calc_intrest();
     }
-    void update_loan_details(string id, string name, double amount, double interest_rate, int tenure)
-    {
-        Loan_ID = id;
-        Applicant_Name = name;
-        Total_Loan_Amount = amount;
-        Annual_Interest_Rate = interest_rate;
-        Loan_Tenure_Months = tenure;
-    }
-    void higest_emi(int n, Loan_EMI_Management_System loans[])
-    {
-        double max_emi = 0;
-        double max_2_emi = 0;
-        int max_emi_index = 0;
-        for (int i = 0; i < n; i++)
-        {
-            double emi = loans[i].calc_intrest();
-            if (emi > max_emi)
-            {
-                max_2_emi = max_emi;
-                max_emi = emi;
-                max_emi_index = i;
-            }
-            else if (emi > max_2_emi && emi != max_emi)
-            {
-                max_2_emi = emi;
+    void higest_emi(int n, Loan_EMI_Management_System[]){
+        int max=0;
+        int ans;
+        int x =(emi * Loan_Tenure_Months) - Total_Loan_Amount;
+        for(int i=0; i<n; i++){
+            if(x>max){
+                ans = loans[i];
             }
         }
-        cout << "###################################################################" << endl;
-        cout << "Highest EMI is for Loan ID: " << loans[max_emi_index].Loan_ID << " with EMI: " << max_emi << endl;
-        cout << "Second Highest EMI is for Loan ID: " << loans[max_emi_index - 1].Loan_ID << " with EMI: " << max_2_emi << endl;
+        cout<<"your higst Emi is "<<ans<<endl;
     }
+    
 };
 int main()
 {
