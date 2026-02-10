@@ -33,7 +33,7 @@ class payroll_system{
     string grade(){
         double total = calculat_salary();
         if (total >= 50000){
-            return "A";
+            return "A Gr";
         }
         else if (total >= 30000){
             return "B";
@@ -59,7 +59,7 @@ payroll_system employe[n];
 
 do{
 
-    cout << " 1. Add Employee and Slary Details" << endl;
+    cout <<endl<< " 1. Add Employee and Slary Details" << endl;
     cout << " 2. Display Employee Salary Details" << endl;
     cout << " 3. Update Employee Bonus" << endl;
     cout << " 4. Add  details of employee" << endl;
@@ -130,8 +130,12 @@ do{
             employe[i - 1] = payroll_system(name, salary, bonus);
     }
         break; 
+    case 5:
+    {
+        cout<<"THANKYOU!!!"<<endl;
+    }
     default: 
-        cout<<"Invalide Case!!!";
+        cout<<"Invalide Choice!!!";
     }
 }while(choice!=0);
 
