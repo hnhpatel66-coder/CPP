@@ -59,8 +59,8 @@ payroll_system employe[n];
 
 do{
 
-    cout <<endl<< " 1. Add Employee and Slary Details" << endl;
-    cout << " 2. Display Employee Salary Details" << endl;
+    cout << " 1. Add Employee Details" << endl;
+    cout << " 2. Display  Salary Details" << endl;
     cout << " 3. Update Employee Bonus" << endl;
     cout << " 4. Add  details of employee" << endl;
     cout << " 6. Exit" << endl;
@@ -115,7 +115,7 @@ do{
             int i;
             cout << "Enter index of employee to add details (1 to " << n << "): ";
             cin >> i;
-            if (i < 1 || i > n)
+            if (i >n || i < 1 )
             {
                 cout << "Invalid index!" << endl;
                 break;
@@ -125,7 +125,7 @@ do{
             cin >> name;
             cout << "Basic Salary: ";
             cin >> salary;
-            cout << "Bonus (default is 2000): ";
+            cout << "Bonus : ";
             cin >> bonus;
             employe[i - 1] = payroll_system(name, salary, bonus);
     }

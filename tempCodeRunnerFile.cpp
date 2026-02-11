@@ -1,160 +1,75 @@
 #include <iostream>
-#include <cmath>
 using namespace std;
-class Loan_EMI_Management_System
-{
-    string Loan_ID;
-    string Applicant_Name;
-    double Total_Loan_Amount;
-    double Annual_Interest_Rate;
-    int Loan_Tenure_Months;
+class Inventory_Management_System{
+    string Unique_item_ID;
+    string Item_name;
+    float Price;
+    int Quantity_in_stock;
 
 public:
-    Loan_EMI_Management_System()
-    {
-        Loan_ID = "00000000";
-        Applicant_Name = "Default Applicant";
-        Total_Loan_Amount = 0;
-        Annual_Interest_Rate = 0;
-        Loan_Tenure_Months = 0;
+    Inventory_Management_System():Unique_item_ID(0),Item_name(0), Price (0),Quantity_in_stock(0){}
+       
+    Inventory_Management_System(string id, string name, float price, int quantity){
+        Unique_item_ID = id;
+        Item_name = name;
+        Price = price;
+        Quantity_in_stock = quantity;
     }
-    Loan_EMI_Management_System(string id, string name, double amount, double interest_rate, int tenure)
-    {
-        Loan_ID = id;
-        Applicant_Name = name;
-        Total_Loan_Amount = amount;
-        Annual_Interest_Rate = interest_rate;
-        Loan_Tenure_Months = tenure;
-    }
-    double calc_intrest()
-    {
-        double monthly_interest_rate = Annual_Interest_Rate / 12 / 100;
-        double emi = (Total_Loan_Amount * monthly_interest_rate * pow(1 + monthly_interest_rate, Loan_Tenure_Months)) / (pow(1 + monthly_interest_rate, Loan_Tenure_Months) - 1);
-        cout << "---------------------------------------------------------" << endl;
-        cout << " Total monthly EMI is: " << emi << endl;
-        cout << "Total Interest for Loan ID " << Loan_ID << " is: " << (emi * Loan_Tenure_Months) - Total_Loan_Amount << endl;
-        cout << "Total repayment for Loan ID " << Loan_ID << " is: " << (emi * Loan_Tenure_Months) << endl;
-        return (emi * Loan_Tenure_Months) - Total_Loan_Amount;
-    }
-    void display_details()
-    {
-        cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << endl;
-        cout << "Loan ID: " << Loan_ID << endl;
-        cout << "Applicant Name: " << Applicant_Name << endl;
-        cout << "Total Loan Amount: " << Total_Loan_Amount << endl;
-        cout << "Annual Interest Rate: " << Annual_Interest_Rate << "%" << endl;
-        cout << "Loan Tenure (Months): " << Loan_Tenure_Months << endl;
-        calc_intrest();
-    }
-    void higest_emi(int n, Loan_EMI_Management_System[]){
-        int max=0;
-        int ans;
-        int x =(emi * Loan_Tenure_Months) - Total_Loan_Amount;
-        for(int i=0; i<n; i++){
-            if(x>max){
-                ans = loans[i];
-            }
-        }
-        cout<<"your higst Emi is "<<ans<<endl;
-    }
-    
+    void add_stock();
+    void sell_stock();
+    void total_stock(int n, Inventory_Management_System I[]);
+    void display();
+    void input();
 };
-int main()
+void Inventory_Management_System::input(){
+    cout << "Unique Item ID: "; cin>>Unique_item_ID;
+    cout << "Item Name: "; cin>>Item_name;
+    cout << "Price: "; cin>>Price;
+    cout << "Quantity in Stock: "; cin>>Quantity_in_stock;
+}
+
+void Inventory_Management_System::display(){
+    cout << "______________________________________________________________________" << endl;
+    cout << "Unique Item ID: " << Unique_item_ID << endl;
+    cout << "Item Name: " << Item_name << endl;
+    cout << "Price: " << Price << endl;
+    cout << "Quantity in Stock: " << Quantity_in_stock << endl;
+}
+
+void Inventory_Management_System::add_stock()
 {
-    int n;
-    cout << "Enter the number of loans: ";
-    cin >> n;
-    Loan_EMI_Management_System loans[n];
-    int k;
-    cout << "***************************************************************" << endl;
-    cout << "************ Welcome to Loan EMI Management System ************" << endl;
-    cout << "***************************************************************" << endl;
-    do
+    int quantity;
+    cout << "Enter Quantity to Add: ";
+    cin >> quantity;
+
+    Quantity_in_stock += quantity;
+}
+void Inventory_Management_System::sell_stock()
+{
+    int quantity;
+    cout << "Enter Quantity to Sell: ";
+    cin >> quantity;
+    if (quantity <= Quantity_in_stock)
     {
-        cout << " 1. Add Loan Details" << endl;
-        cout << " 2. Display Loan Details" << endl;
-        cout << " 3. Update Loan Details" << endl;
-        cout << " 4. Calculate EMI and Interest" << endl;
-        cout << " 5. Find Highest and Second Highest EMI" << endl;
-        cout << " 6. Exit" << endl;
-        cout << "Enter your choice: ";
-        cin >> k;
-        switch (k)
-        {
-        case 1:
-        {
-            cout << "You have chosen to add loan details." << endl;
-            cout << "ENtre index of loan to add details (1 to " << n << "): ";
-            int i;
-            cin >> i;
-            i = i - 1;
+        Quantity_in_stock -= quantity;
+    }
+    else
+    {
+        cout << "Insufficient Stock!" << endl;
+    }
+}
 
-            string id, name;
-            double amount, interest_rate;
-            int tenure;
-            cout << "***************************************************************" << endl;
-            cout << "Enter details for Loan " << i + 1 << ":" << endl;
-            cout << "Loan ID: ";
-            cin >> id;
-            cout << "Applicant Name: ";
-            cin >> name;
-            cout << "Total Loan Amount: ";
-            cin >> amount;
-            cout << "Annual Interest Rate: ";
-            cin >> interest_rate;
-            cout << "Loan Tenure (Months): ";
-            cin >> tenure;
-            loans[i] = Loan_EMI_Management_System(id, name, amount, interest_rate, tenure);
-        }
-        break;
-        case 2:
-            cout << "You have chosen to display loan details." << endl;
-            for (int i = 0; i < n; i++)
-            {
-                loans[i].display_details();
-            }
-            break;
-        case 3:
-        {
-            cout << "You have chosen to update loan details." << endl;
-            cout << "Enter index of loan to update details (1 to " << n << "): ";
-            int i;
-            cin >> i;
-            i = i - 1;
-            string id, name;
-            double amount, interest_rate;
-            int tenure;
-            cout << "***************************************************************" << endl;
-            cout << "Enter updated details for Loan " << i + 1 << ":" << endl;
-            cout << "Loan ID: ";
-            cin >> id;
-            cout << "Applicant Name: ";
-            cin >> name;
-            cout << "Total Loan Amount: ";
-            cin >> amount;
-            cout << "Annual Interest Rate: ";
-            cin >> interest_rate;
-            cout << "Loan Tenure (Months): ";
-            cin >> tenure;
-            loans[i] = Loan_EMI_Management_System(id, name, amount, interest_rate, tenure);
-        }
-        break;
-        case 4:
-        {
-            cout << "You have chosen to calculate EMI and Interest." << endl;
-            for (int i = 0; i < n; i++)
-                loans[i].calc_intrest();
-        }
-        break;
-        case 5:
-        {
-            loans[0].higest_emi(n, loans);
-        }
-        case 6:
-            cout << "Exiting the program. Thank you!" << endl;
-            break;
-        }
-    } while (k != 6);
+int main(){
+    Inventory_Management_System A(),B(string id, string name, float price, int quantity);
+    A.input();
+    A.add_stock();
+    A.sell_stock();
+    A.display();
 
-    return 0;
+    B.input();
+    B.add_stock();
+    B.sell_stock();
+    B.display();
+
+return 0;
 }

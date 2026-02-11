@@ -33,5 +33,11 @@ class account_management_syste{
                 cout<<"invalid transactions!!!"<<endl;
             }
         }
-
+        void add_account(){
+            
+        }
 };
+
+int main(){
+
+}
