@@ -1,22 +1,19 @@
 #include <iostream>
 using namespace std;
-class Inventory_Management_System
-{
+class Inventory_Management_System{
     string Unique_item_ID;
     string Item_name;
     float Price;
     int Quantity_in_stock;
 
 public:
-    Inventory_Management_System()
-    {
+    Inventory_Management_System(){
         Unique_item_ID = "*******";
         Item_name = "-------";
         Price = 0;
         Quantity_in_stock = 0;
     }
-    Inventory_Management_System(string id, string name, float price, int quantity)
-    {
+    Inventory_Management_System(string id, string name, float price, int quantity){
         Unique_item_ID = id;
         Item_name = name;
         Price = price;
@@ -68,7 +65,7 @@ void Inventory_Management_System::total_stock(int n, Inventory_Management_System
 }
 void Inventory_Management_System::display()
 {
-    cout << "*********************************************" << endl;
+    cout << "*******************************************************" << endl;
     cout << "Unique Item ID: " << Unique_item_ID << endl;
     cout << "Item Name: " << Item_name << endl;
     cout << "Price: " << Price << endl;
