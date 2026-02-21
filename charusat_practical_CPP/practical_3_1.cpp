@@ -8,11 +8,12 @@ class payroll_system{
         double basic_salary;
         double bonus_amount;
     public:
-        payroll_system(){
-            name="***";
-            basic_salary=0;
-            bonus_amount=0;
-        }
+        payroll_system():name("***"), basic_salary(0), bonus_amount(0) {}
+        // payroll_system(){
+        //     name="***";
+        //     basic_salary=0;
+        //     bonus_amount=0;
+        // }
         payroll_system(string n, double salary, double bonus){
             name=n;
             basic_salary=salary;
@@ -33,13 +34,13 @@ class payroll_system{
     string grade(){
         double total = calculat_salary();
         if (total >= 50000){
-            return "A Gr";
+            return "A Grade";
         }
         else if (total >= 30000){
-            return "B";
+            return "B Grade";
         }
         else{
-            return "C";
+            return "C Grade";
         }
     }
 
@@ -132,7 +133,7 @@ do{
         break; 
     case 5:
     {
-        cout<<"THANKYOU!!!"<<endl;
+        cout<<"THANKYOU FOR VISIT!!!"<<endl;
     }
     default: 
         cout<<"Invalide Choice!!!";
