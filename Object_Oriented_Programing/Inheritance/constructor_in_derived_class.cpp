@@ -42,7 +42,7 @@ class Base2{
         }
 };
 
-class Derived: public Base2, public Base1{
+class Derived: public Base1, public Base2{
     int derived1, derived2;
     public:
         Derived(int a, int b, int c, int d) : Base2(b), Base1(a)
@@ -57,9 +57,11 @@ class Derived: public Base2, public Base1{
             cout << "The value of derived2 is " << derived2 << endl;
         }
 };
-
 int main(){
     Derived Nirbhay(1, 2, 3, 4);
+    Nirbhay.printDataBase1();
+    Nirbhay.printDataBase2();
     Nirbhay.printDataDerived();
+
     return 0;
 }
