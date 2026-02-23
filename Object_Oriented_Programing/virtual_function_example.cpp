@@ -64,9 +64,15 @@ int main(){
     //hnhvideo.display();
 
     //for text
-    tital= "Data Structure textual";
-    words= 1111;
-    reting= 4.9;
+    // tital= "Data Structure textual";
+    // words= 1111;
+    // reting= 4.9;
+    cout<<"Enter the tital of the text: ";
+    cin>>tital;     
+    cout<<"Enter the reting of the text: ";
+    cin>>reting;
+    cout<<"Enter the number of words in the text: ";    
+    cin>>words;
     HNHtext hnhtext(tital, reting, words);
     // hnhtext.display();
 
