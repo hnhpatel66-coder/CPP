@@ -50,9 +50,16 @@ int main(){
     int words;
 
     //for video
-    tital= "Data Structure";
-    reting= 4.5;
-    vlen= 33.33; 
+    // tital= "Data Structure";
+    // reting= 4.5;
+    // vlen= 33.33; 
+
+    cout<<"Enter the tital of the video: ";
+    cin>>tital;
+    cout<<"Enter the reting of the video: ";    
+    cin>>reting;
+    cout<<"Enter the length of the video: ";
+    cin>>vlen;
     HNHvideo hnhvideo(tital, reting, vlen);
     //hnhvideo.display();
 
