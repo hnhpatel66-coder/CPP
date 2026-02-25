@@ -46,9 +46,7 @@ int main()
     Nirbhay.input();
     Nirbhay.output();
     Nirbhay.MoneyDepo();
-    Nirbhay.output();
-
-
+    Nirbhay.output(); 
 
     return 0;
 }
