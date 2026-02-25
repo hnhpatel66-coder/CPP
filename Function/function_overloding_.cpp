@@ -10,7 +10,7 @@ void show(double b) {
 }
 
 int main() {
-    show(10);
-    show(5.5);
+    show(9);
+    show(333333333);
     return 0;
 }
