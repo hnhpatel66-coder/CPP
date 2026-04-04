@@ -43,12 +43,10 @@ public:
         return res;
     }
 
-    // Store result
     void storeResult(double value) {
         results[index++] = value;
     }
 
-    // Display all results
     void displayResults() {
         cout << "\n-----------------------All Results------------------------\n";
         for (int i = 0; i < index; i++) {
