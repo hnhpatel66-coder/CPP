@@ -2,14 +2,14 @@
 #include<string>
 using namespace  std;
 
-class account_management_syste{
+class account_management_systme{
     private:
         int Account_number;
         string Account_holders_name;
         double Current_balance;
     public:
-        account_management_syste(): Account_number(0), Account_holders_name(0), Current_balance(0){}
-        account_management_syste(int A_n, string holders_name, double balance){
+        account_management_systme(): Account_number(0), Account_holders_name(0), Current_balance(0){}
+        account_management_systme(int A_n, string holders_name, double balance){
             int Account_number=A_n;
             string Account_holders_name=holders_name;
             double Current_balance=balance;
