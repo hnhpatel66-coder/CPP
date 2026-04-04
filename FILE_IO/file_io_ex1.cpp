@@ -14,7 +14,7 @@ int main(){
     hout<<name;
 
     //writing a string to the file
-    hout<<"My Name is " + name;
+    hout<<" My Name is " + name;
 
     hout.close(); // closing the file after writing
 
