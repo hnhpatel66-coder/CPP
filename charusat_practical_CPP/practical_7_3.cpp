@@ -1,9 +1,12 @@
 #include<iostream>
 using namespace std;
 
+class far;
+
 class cel{
     private:
         float celcius;
+        
     public:
         cel(float c):celcius(c){}
 
