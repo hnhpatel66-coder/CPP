@@ -1,29 +1,39 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-    int n;
-    cout<<"Enter n:";
-    cin>>n;
-    int size = 0;
-    int* arr = nullptr;
-
-    // Insert n elements
-    for(int i=0;i<n;i++) {
-        int* temp = new int[size+1];
-        for(int j=0;j<size;j++){
-            temp[j] = arr[j];
+class dynamicarray{
+    private:
+        int *arr;
+        int size;
+    public:
+        dynamicarray(){
+            arr=0;
+            size=0;
         }
-        temp[size] = i+1;
-        delete[] arr;
-        arr = temp;
-        size++;
-    }
 
-    // Display
-    for(int i=0;i<size;i++){
-        cout << arr[i] << " ";
-    }    
+        void insertnew(int val){
 
-    delete[] arr;
+        }
+
+};
+
+int main() {
+    dynamicarray c1;
+    c1.insternew(9);
+    c1.display();
+    c1.insternew(11);
+    c1.display();
+    c1.insternew(33);
+    c1.display();
+    c1.insternew(19);
+    c1.display();
+    c1.insternew(15);
+    c1.display();
+    c1.remove(17);
+    c1.display();
+    c1.insterat(3, 19);
+    c1.display();
+    c1.serch(39);
+    c1.count(91);
+    return 0;
 }
