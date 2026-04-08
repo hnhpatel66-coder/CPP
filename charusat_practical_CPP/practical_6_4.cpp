@@ -1,223 +1,231 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
+class base_acc
+{
+protected:
+    string acc_no;
+    double current_balance;
 
-class account{
-    protected:
-        string name;
-        int acc_no;
-        double balance;
-    public:
+public:
+    base_acc()
+    {
+        acc_no = "**";
+        current_balance = 0.0;
+    }
+    base_acc(string no, double balance)
+    {
+        acc_no = no;
+        current_balance = balance;
+    }
 
-        account(){
-            name = "***";
-            acc_no = 000;
-            balance = 0.0;
+    void display()
+    {
+        cout << "Account No: " << acc_no << endl;
+        cout << "Current Balance: " << current_balance << endl;
+    }
+    void withdraw(double amount)
+    {
+        if (amount > current_balance)
+        {
+            cout << "Insufficient balance!" << endl;
         }
-
-        account(string n, int a, double b){
-            name = n;
-            acc_no = a;
-            balance = b;
+        else
+        {
+            current_balance -= amount;
+            cout << "Withdrawal successful. New balance: " << current_balance << endl;
         }
-
-        void input(){
-            cout<<"----------------Enter Your Bank Detail-----------------------"<<endl;
-            cout<<"Enter your Name: ";  
-            cin>>name;
-
-            cout<<"Enter your   Account Number: ";
-            cin>>acc_no;
-
-            cout<<"Enter your Balance: ";
-            cin>>balance;
-        }
-
-        void display(){
-            cout<<"---------------------Your Bank Detail----------------------------"<<endl;
-
-            cout<<"Name: "<<name<<endl;
-            cout<<"Account Number: "<<acc_no<<endl;
-            cout<<"Balance: "<<balance<<endl;
-        }
-
-        void deposit(){
-            
-            double amount;
-            cout<<"Enter the amount to deposit: ";
-            cin>>amount;
-
-            balance += amount;
-            cout<<"Amount deposited successfully. New balance: "<<balance<<endl;
-        }
-
-        void withdraw(){
-
-            double amount;
-            cout<<"Enter the amount to withdraw: ";
-            cin>>amount;
-    
-            if(amount > balance){
-                cout<<"Insufficient balance. Withdrawal failed."<<endl;
-            }
-            else{
-                balance -= amount;
-                cout<<"Amount withdrawn successfully. New balance: "<<balance<<endl;
-            }
-        }
+    }
+    void deposit(double amount)
+    {
+        current_balance += amount;
+        cout << "Deposit successful. New balance: " << current_balance << endl;
+    }
+    ~base_acc()
+    {
+        cout << "Base class destructor called" << endl;
+    }
 };
+class saving_acc : public base_acc
+{
+protected:
+    double interest_rate;
 
-class SavingsAccount: public account{
-    protected:
-         
-    public:
-        
-        void interest_rate(){
-            float intrestrate = ((balance * 2.5)/100);
-            balance += intrestrate;
+public:
+    saving_acc()
+    {
+        interest_rate = 0.0;
+    }
+    saving_acc(string no, double balance, double rate) : base_acc(no, balance)
+    {
+        interest_rate = rate;
+    }
+    void display()
+    {
+        base_acc::display();
+        cout << "Interest Rate: " << interest_rate << "%" << endl;
+    }
 
-            cout<<"your balance after adding intrest is: "<<balance<<endl;
-        } 
-
+    ~saving_acc()
+    {
+        cout << "Saving account destructor called" << endl;
+    }
 };
+class current_acc : public base_acc
+{
+protected:
+    double overdraft_limit;
 
-class CurrentAccount: public account{
-    protected:
-
-    public:
-        void minimum_balance(){
-            if(balance < 1000){
-                cout<<"Your balance is less than 1000, Please deposit more money to avoid penalty."<<endl;
-            }
-            else{
-                cout<<"Your balance is sufficient, No penalty applied."<<endl;
-            }
-        }
-        void maximum_balance(){
-            if(balance > 5000000){
-                cout<<"Your balance is more than 5000000, Please consider investing to earn more."<<endl;
-            }
-            else{
-                cout<<"Your balance is within the acceptable limit."<<endl;
-            }
-        }
-    
+public:
+    current_acc()
+    {
+        overdraft_limit = 0.0;
+    }
+    current_acc(string no, double balance, double limit) : base_acc(no, balance)
+    {
+        overdraft_limit = limit;
+    }
+    void display()
+    {
+        base_acc::display();
+        cout << "Overdraft Limit: " << overdraft_limit << endl;
+    }
+    ~current_acc()
+    {
+        cout << "Current account destructor called" << endl;
+    }
 };
+int main()
+{
 
-int main(){
-    int n;
-    cout<<"Enter the number of saving accounts: ";
-    cin>>n;
+    int choice;
+    while (choice != 3)
+    {
+        cout << "what type of account you want to create?" << endl;
+        cout << " 1.  saving" << endl;
+        cout << "2.  current" << endl;
+        cout << "3.  exit" << endl;
 
-    int m;
-    cout<<"Enter the number of current accounts: ";
-    cin>>m;
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+        {
+            cout << "how many saving account you want to create?";
+            int n;
+            cin >> n;
+            saving_acc sa[n];
+            for (int j = 0; j < n; j++)
+            {
+                string acc_no;
+                double balance, rate;
+                cout << "account " << j + 1 << ":" << endl;
+                cout << "Enter account number: ";
+                cin >> acc_no;
+                cout << "Enter current balance: ";
+                cin >> balance;
+                cout << "Enter interest rate for saving account: ";
+                cin >> rate;
 
-    SavingsAccount s1[n];
-    CurrentAccount c1[m];
+                saving_acc temp(acc_no, balance, rate);
+                sa[j] = temp;
+                cout << "\nSaving Account Details:" << endl;
+                sa[j].display();
+                cout << "------------------------------" << endl;
+                int k;
+                cout << "If you want to deposit entre '1" << endl;
+                cout << "if you want to withdraw enter '2' " << endl;
+                cout << "for continue enter '3'" << endl;
 
-    do{
-        cout<<"--------------Welcome to the bank management system------------------"<<endl;
-        cout<<"1. Enter Input for Account"<<endl;
-        cout<<"2. Display Account Details"<<endl;
-        cout<<"3. Deposit Amount"<<endl;
-        cout<<"4. Withdraw Amount"<<endl;
-        cout<<"5. Calculate Interest for Savings Account"<<endl;
-        cout<<"6. Check Minimum Balance for Current Account"<<endl;
-        cout<<"7. Check Maximum Balance for Current Account"<<endl;
-        cout<<"8. Exit"<<endl;
+                cin >> k;
+                if (k == 1)
+                {
+                    double amount;
+                    cout << "Enter the amount you want to deposit: ";
+                    cin >> amount;
+                    sa[j].deposit(amount);
+                }
+                else if (k == 2)
+                {
+                    double amount;
+                    cout << "Enter the amount you want to withdraw: ";
+                    cin >> amount;
+                    sa[j].withdraw(amount);
+                }
+                else if (k == 3)
+                {
+                    continue;
+                }
+                else
+                {
+                    cout << "Invalid choice!" << endl;
+                }
+            }
+        }
+        break;
+        case 2:
+        {
+            cout << "how many current account you want to create?";
+            int n;
+            cin >> n;
+            current_acc ca[n];
+            for (int j = 0; j < n; j++)
+            {
+                string acc_no;
+                double balance, limit;
+                cout << "account " << j + 1 << ":" << endl;
+                cout << "Enter account number: ";
+                cin >> acc_no;
+                cout << "Enter current balance: ";
+                cin >> balance;
+                cout << "Enter overdraft limit for current account: ";
+                cin >> limit;
 
-        int choice;
-        cout<<"Enter your choice: ";
-        cin>>choice;
+                current_acc temp(acc_no, balance, limit);
+                ca[j] = temp;
 
-        switch(choice){
-            case 1:
-                    for(int i=0; i<n; i++){
-                        cout<<"---------------------Enter Details for Savings Account "<<i+1<<"----------------------------"<<endl;
-                        s1[i].input();
-                    }
-                    for(int j=0; j<m; j++){
-                        cout<<"---------------------Enter Details for Current Account "<<j+1<<"----------------------------"<<endl;
-                        c1[j].input();
-                    }
-                break;
-            case 2:
-                    for(int i=0; i<n;i++){
-                        s1[i].display();
-                    }
-                    for(int j=0; j<m;j++){
-                        c1[j].display();
-                    }
-                break;
-            case 3:
-                    for(int i=0; i<n; i++){
-                        s1[i].deposit();
-                    }
-                    for(int i=0; i<m; i++){
-                        c1[i].deposit();
-                    }
-                break;
-            case 4:
-                    for(int i=0; i<n; i++){
-                        s1[i].withdraw();
-                    }
-                    for(int i=0; i<m; i++){
-                        c1[i].withdraw();
-                    }
-                break;
-            case 5:
-                    for(int i=0; i<n; i++){
-                        s1[i].interest_rate();
-                    }
-                    
-                break;
-            case 6:
-                    for(int i=0; i<m; i++){
-                        c1[i].minimum_balance();
-                    }
-                break;
-            case 7:
-                   
-                    for(int i=0; i<m; i++){
-                        c1[i].maximum_balance();
-                    }
-                break;
-            case 8:
-                cout<<"Exiting the system. Goodbye!"<<endl;
-                break;
-            default:
-                cout<<"Invalid choice. Please try again."<<endl;
+                cout << "\nCurrent Account Details:" << endl;
+                ca[j].display();
+                cout << "------------------------------" << endl;
+                int k;
+                cout << "If you want to deposit entre '1' " << endl;
+                cout << "if you want to withdraw enter '2' " << endl;
+                cout << "for continue enter '3'" << endl;
+                cin >> k;
+                if (k == 1)
+                {
+                    double amount;
+                    cout << "Enter the amount you want to deposit: ";
+                    cin >> amount;
+                    ca[j].deposit(amount);
+                }
+                else if (k == 2)
+                {
+                    double amount;
+                    cout << "Enter the amount you want to withdraw: ";
+                    cin >> amount;
+                    ca[j].withdraw(amount);
+                }
+                else if (k == 3)
+                {
+                    continue;
+                }
+                else
+                {
+                    cout << "Invalid choice!" << endl;
+                }
+            }
+        }
+        case 3:
+        {
+            cout << "Exiting..." << endl;
+            break;
         }
 
-    }while(7!=0);
-    // for(int i=0; i<n; i++){
-    //     s1[i].input();
-    //     //s1[i].display();
-    //     s1[i].deposit();
-    //     s1[i].withdraw();
-    //     s1[i].interest_rate();
+        default:
+            cout << "Invalid choice!" << endl;
+            break;
+        }
+    }
 
-    //     cout<<"------------------------------------------------------"<<endl;
-    // }
-
-    // for(int i=0; i<m; i++){
-    //     c1[i].input();
-    //     //c1[i].display();
-    //     c1[i].deposit();
-    //     c1[i].withdraw();
-    //     c1[i].minimum_balance();
-    //     c1[i].maximum_balance();
-
-    //     cout<<"------------------------------------------------------"<<endl;
-    // }
-    // for(int i=0; i<n; i++){
-    //     cout<<"---------------------Final Details of Savings Account----------------------------"<<endl;
-    //     s1[i].display();
-    // }
-    // for(int i=0; i<m; i++){
-    //     cout<<"---------------------Final Details of Current Account----------------------------"<<endl;
-    //     c1[i].display();
-    // }
-    
     return 0;
 }
