@@ -22,7 +22,7 @@ class circle_area: public circle_base{
     protected:
     public:
     void area(){
-        cout<<"Area of circle is: "<<3.14*redius*redius<<endl;
+        cout<<3.14*redius*redius<<endl;
     }
 };
 
