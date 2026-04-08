@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-class Student{
+class GradSystem{
     protected:
         float marks[3];
     public:
@@ -9,7 +9,7 @@ class Student{
 
 };
 
-class Undergraduate : public Student{
+class Undergraduate : public GradSystem{
     private:
     public:
 
@@ -51,7 +51,7 @@ class Undergraduate : public Student{
 }
 };
 
-class Postgraduate : public Student{
+class Postgraduate : public GradSystem{
     private:
     public:
     float cgpa;
