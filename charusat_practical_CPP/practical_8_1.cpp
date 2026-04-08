@@ -16,9 +16,9 @@ int main(){
     cout<<"Enter Value of b: ";
     cin>>b;
 
-    try{
+    try{ //try -> risky code
         if(b==0){
-            throw InfinitiNumberException();
+            throw InfinitiNumberException(); // throw -> error send(mokle)
         }
         else{
             double answer = (a / b);
@@ -26,7 +26,7 @@ int main(){
         }
     }
 
-    catch(InfinitiNumberException a){
+    catch(InfinitiNumberException a){ // catch -> error handle
         a.showError();
     }
     return 0;
