@@ -113,7 +113,6 @@ public:
 int main()
 {
     dynamicarray c1;
-
     // int n;
     // cout<<"Enter value of N: ";
     // cin>>n;
@@ -135,11 +134,13 @@ int main()
     int k;
     cout<<"Enter value of K: ";
     cin>>k;
+
     for (int i = 1; i <= k; i++)
     {
         c1.insternew(i * 10);
     }
-
+    c1.display();
+    
     int choice;
     do{
         cout<<"-------------------------MENU----------------------------"<<endl;
