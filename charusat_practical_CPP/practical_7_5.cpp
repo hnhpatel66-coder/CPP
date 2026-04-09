@@ -44,7 +44,7 @@ class Undergraduate : public GradSystem{
             else if(pr>=33 && 50>=pr){
                 cout<<"C Grade"<<endl;
             }
-            else if(pr<=3.2 && pr<=0.0){
+            else if(pr<=32 && pr<=0.0){
                 cout<<"You are Fail"<<endl;
             }
             
@@ -102,9 +102,9 @@ Undergraduate s1;
 Postgraduate s2;
 
 s1.input();
-s1.Grade();
-
 s2.input();
+
+s1.Grade();
 s2.Grade();
 
     return 0;
