@@ -8,7 +8,7 @@ class dynamicarray
 public:
     dynamicarray()
     {
-        arr = '\0';
+        arr = nullptr;
         size = 0;
     }
     void insternew(int val)
@@ -114,22 +114,94 @@ int main()
 {
     dynamicarray c1;
 
-    int n;
-    cout<<"Enter value of N: ";
-    cin>>n;
-    for (int i = 1; i <= n; i++)
+    // int n;
+    // cout<<"Enter value of N: ";
+    // cin>>n;
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     c1.insternew(i * 10);
+    // }
+    // c1.display();
+    // c1.insternew(33);
+    // c1.display();
+    // c1.remove(7);
+    // c1.display();
+    // c1.insterat(3, 33);
+    // c1.display();
+    // c1.serch(99);
+    // c1.display();
+    // c1.count(19);
+
+    int k;
+    cout<<"Enter value of K: ";
+    cin>>k;
+    for (int i = 1; i <= k; i++)
     {
         c1.insternew(i * 10);
     }
-    c1.display();
-    c1.insternew(33);
-    c1.display();
-    c1.remove(7);
-    c1.display();
-    c1.insterat(3, 33);
-    c1.display();
-    c1.serch(99);
-    c1.display();
-    c1.count(19);
+
+    int choice;
+    do{
+        cout<<"-------------------------MENU----------------------------"<<endl;
+        cout<<"1. Display "<<endl;
+        cout<<"2. Remove"<<endl;
+        cout<<"3. Inserternew "<<endl;
+        cout<<"4. insterat "<<endl;
+        cout<<"5. serch "<<endl;
+        cout<<"6. count "<<endl;
+        cout<<"7. Exit!!!"<<endl;
+        cout<<"Enter your Choice: ";
+        cin>>choice;
+
+        switch (choice)
+        {
+        case 1:
+                c1.display();
+            break;
+        case 2:
+                int m;
+                cout<<"Enter Remove digits: ";
+                cin>>m;
+                c1.remove(m);
+                
+            break;
+        case 3:
+                int b;
+                cout<<"Enter Inserternew digits: ";
+                cin>>b;
+                c1.insternew(b);
+            break;
+        case 4:
+                int a;
+                cout<<"Enter Insterate digits: ";
+                cin>>a;
+
+                int idx;
+                cout<<"Enter Insterate Index: ";
+                cin>>idx;
+
+                c1.insterat(idx,a);
+ 
+            break;
+        case 5:
+                int n;
+                cout<<"Enter serch digits: ";
+                cin>>n;
+                c1.serch(n);
+            break;
+        case 6:
+                int c;
+                cout<<"Enter count digits: ";
+                cin>>c;
+                c1.count(c);
+            break;
+        case 7:
+                cout<<"Exit!!!"<<endl;
+            break;                    
+        default: cout<<"Invalid Choice "<<endl;
+            break;
+        }
+    }while (choice!=7);
+    
     return 0;
 }
