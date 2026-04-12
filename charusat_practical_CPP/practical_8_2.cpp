@@ -16,16 +16,16 @@ int main(){
 
     try{// risky code
         // Check for negative number
-        if(n < 0) {
+        if(n<0) {
             throw NegativeNumberException(); // throw exception
         }
         else{// Calculate square root
         double result = sqrt(n);
-        cout << "Square root = " << result << endl;
+        cout<<"Square root = "<<result<<endl;
         }
     }
 
-    catch (NegativeNumberException a) {
+    catch(NegativeNumberException a) {
         a.showError(); // handle exception
     }
     return 0;

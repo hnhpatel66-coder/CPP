@@ -63,6 +63,7 @@ int main() {
     // c.fahrenhit();
     // f.celcius();
 
+    // c== cel(f) thay
     if(c == f){
         cout << "Temperatures are equal." << endl;
     } else {
