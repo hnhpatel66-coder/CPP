@@ -5,7 +5,7 @@ using namespace std;
 class  NegativeNumberException{
     public:
         void showError() {
-        cout << "Error: Negative number entered! Square root not possible." << endl;
+        cout<<"Error: Negative number entered! Square root not possible."<<endl;
     }
 };
 
