@@ -4,7 +4,7 @@ using namespace std;
 class  InfinitiNumberException{
     public:
         void showError() {
-        cout << "Error: Division by zero is not allowed!" << endl;
+        cout<<"Error: Division by zero is not allowed!"<<endl;
     }
 };
 
@@ -20,9 +20,9 @@ int main(){
         if(b==0){
             throw InfinitiNumberException(); // throw -> error send(mokle)
         }
-        else{
+        else if(b!=0){
             double answer = (a / b);
-            cout<<" Answer: "<<answer<<endl;
+            cout<<"Answer: "<<answer<<endl;
         }
     }
 
