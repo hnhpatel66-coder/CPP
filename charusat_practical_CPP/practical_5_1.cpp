@@ -8,7 +8,7 @@ int main(){
     cout<<"String: "<<s1;
 
     for(int i=0; i!=s1.length(); i++){
-        if(s1[i]=='Nirbhay'){
+        if(s1=="Nirbhay"){
             cout<<i+1<<" Nirbhay"<<endl;
         }
     }

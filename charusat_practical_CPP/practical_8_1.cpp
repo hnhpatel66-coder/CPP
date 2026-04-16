@@ -18,7 +18,7 @@ int main(){
 
     try{ //try -> risky code
         if(b==0){
-            throw InfinitiNumberException(); // throw -> error send(mokle)
+            throw InfinitiNumberException(); // throw -> error mokle
         }
         else if(b!=0){
             double answer = (a / b);
