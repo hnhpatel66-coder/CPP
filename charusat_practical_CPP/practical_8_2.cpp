@@ -17,7 +17,7 @@ int main(){
         }
     }
 
-    catch(int  a) {
+    catch(double  a) {
         cout<<"Error: Negative number entered! Square root not possible."<<endl;
     }
     return 0;
