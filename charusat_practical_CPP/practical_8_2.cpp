@@ -2,31 +2,23 @@
 #include<cmath>
 using namespace std;
 
-class  NegativeNumberException{
-    public:
-        void showError() {
-        cout<<"Error: Negative number entered! Square root not possible."<<endl;
-    }
-};
-
 int main(){
     double n;
     cout<<"Enter Value of n: ";
     cin>>n;
 
-    try{// risky code
-        // Check for negative number
+    try{
         if(n<0) {
-            throw NegativeNumberException(); // throw exception
+            throw n; 
         }
-        else{// Calculate square root
+        else if(n>=0){
         double result = sqrt(n);
         cout<<"Square root = "<<result<<endl;
         }
     }
 
-    catch(NegativeNumberException a) {
-        a.showError(); // handle exception
+    catch(int  a) {
+        cout<<"Error: Negative number entered! Square root not possible."<<endl;
     }
     return 0;
 }
