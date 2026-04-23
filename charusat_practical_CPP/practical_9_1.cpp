@@ -30,6 +30,14 @@ int main() {
     }
     cout<<endl;
 
+    v.insert(v.begin()+1, 55); 
+
+    cout<<"Elements: ";
+    for(int x : v){
+        cout<<x<<" ";
+    }
+    cout<<endl;
+
     // using vector through reverse iterator
     cout<<"using vector Reversed Elements: "<<endl;  
     for(auto t = v.rbegin(); t!= v.rend(); t++) {
