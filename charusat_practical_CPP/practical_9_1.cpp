@@ -39,7 +39,7 @@ int main() {
     }
     cout<<endl;
 
-    v.erase(find(v.begin(), v.end(), 22));
+    v.erase(find(v.begin(), v.end(), 22)); // find algorithm
 
     cout<<"Elements: ";
     for(int x : v){
