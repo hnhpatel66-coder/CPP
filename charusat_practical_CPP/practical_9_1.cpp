@@ -1,4 +1,5 @@
 #include <iostream>
+#include<algorithm>
 #include <vector>
 using namespace std;
 
@@ -38,6 +39,13 @@ int main() {
     }
     cout<<endl;
 
+    v.erase(find(v.begin(), v.end(), 22));
+
+    cout<<"Elements: ";
+    for(int x : v){
+        cout<<x<<" ";
+    }
+    cout<<endl;
     // using vector through reverse iterator
     cout<<"using vector Reversed Elements: "<<endl;  
     for(auto t = v.rbegin(); t!= v.rend(); t++) {
