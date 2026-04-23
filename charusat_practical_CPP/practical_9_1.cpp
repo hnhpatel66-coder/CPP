@@ -5,6 +5,8 @@ using namespace std;
 int main() {
     vector<int> v={11,22,33};
     
+    cout<<"Vector Size: "<<v.size()<<endl; //3
+
     int n;
     cout<<"Enter n elements: ";
     cin>>n;
@@ -14,6 +16,8 @@ int main() {
         cin>>x;
         v.push_back(x);
     }
+
+    cout<<"Vector Size: "<<v.size()<<endl; //6
     // cin>>n>>m>>k;
     // v.push_back(n);
     // v.push_back(m);
