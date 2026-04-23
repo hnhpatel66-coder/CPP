@@ -17,7 +17,8 @@ int main() {
         v.push_back(x);
     }
 
-    cout<<"Vector Size: "<<v.size()<<endl; //6
+    //cout<<sizeof(v); //12
+    cout<<"Vector Size: "<<v.size()<<endl; //for n=3; 6
     // cin>>n>>m>>k;
     // v.push_back(n);
     // v.push_back(m);
