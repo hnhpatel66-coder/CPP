@@ -43,7 +43,7 @@ public:
         {
             symbol2='O';
         }
-        else
+        else if(symbol1=='O')
         {
             symbol2='X';
         }
