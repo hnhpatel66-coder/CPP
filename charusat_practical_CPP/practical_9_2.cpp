@@ -1,17 +1,26 @@
-#include<iostream>
-#include<map>
-#include<algorithm>
+#include <iostream>
+#include <map>
+#include <sstream>
 using namespace std;
 
-int main(){
-    string str;
-    cout<<"Enter a string: ";
-    //fgets(str, 100, stdin);
-    getline(cin, str);
+int main() {
+    string sentence, word;
+    map<string, int> freq;
 
-    cout<<"Original String: "<<str<<endl;
-    map<string, int> m;
+    cout<<"Enter a sentence: ";
+    getline(cin, sentence);
 
+    stringstream ss(sentence);
+
+    while(ss>>word) {
+        freq[word]++;
+    }
+
+    cout<<"Word Frequencies: "<<endl;
+
+    for(auto it = freq.begin(); it != freq.end(); it++) {
+        cout<<it->first<<" : " << it->second << endl;
+    }
 
     return 0;
 }
