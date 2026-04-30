@@ -17,7 +17,6 @@ int main() {
     }
 
     cout<<"Word Frequencies: "<<endl;
-
     for(auto it = freq.begin(); it != freq.end(); it++) {
         cout<<it->first<<" : " << it->second << endl;
     }
