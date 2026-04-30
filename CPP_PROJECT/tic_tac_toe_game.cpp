@@ -26,7 +26,7 @@ public:
 
         while(true)
         {
-            cout<<player1<<" choose your symbol (X or O) : ";
+            cout<<player1<<"choose your symbol (X or O) : ";
             cin>>symbol1;
 
             if(symbol1=='X' || symbol1=='O')
